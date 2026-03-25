@@ -1,0 +1,56 @@
+{
+  "wsy": {
+    "base_url": "https://api.wsy.com",
+    "token": "",
+    "timeout": 30,
+    "retry": 3,
+    "delay": 1
+  },
+  "qianfan": {
+    "login_url": "https://ark.xiaohongshu.com/",
+    "username": "",
+    "password": "",
+    "headless": false,
+    "slow_mo": 500
+  },
+  "processing": {
+    "profit_rate": 30,
+    "min_price": 9.9,
+    "max_price": 9999,
+    "title_max_length": 20,
+    "image_quality": 85,
+    "image_max_size": 800,
+    "forbidden_words": [
+      "最强", "第一", "唯一", "国家级", "最高级", "最佳",
+      "绝对", "永久", "万能", "特效", "根治"
+    ],
+    "category_map": {
+      "女装": "50000001",
+      "男装": "50000002",
+      "鞋靴": "50000003",
+      "箱包": "50000004",
+      "美妆": "50000005",
+      "配饰": "50000006",
+      "家居": "50000007",
+      "数码": "50000008",
+      "食品": "50000009",
+      "母婴": "50000010"
+    },
+    "tags_map": {
+      "女装": ["OOTD", "穿搭", "显瘦", "氛围感"],
+      "美妆": ["种草", "试色", "平价", "学生党"],
+      "家居": ["收纳", "改造", "ins风", "好物分享"]
+    }
+  },
+  "upload": {
+    "timeout": 30000,
+    "retry": 3,
+    "delay": 2
+  },
+  "feishu_webhook": "",
+  "notification": {
+    "enabled": true,
+    "on_success": true,
+    "on_failure": true
+  }
+}
