@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-小红书千帆后台自动上架机器人
+小红书抖音小店自动上架机器人
 使用Playwright模拟人工操作
 """
 
@@ -20,7 +20,7 @@ except ImportError:
     sys.exit(1)
 
 
-class QianfanUploader:
+class DouyinUploader:
     def __init__(self, config_file=None, log_dir=None):
         self.config = self._load_config(config_file)
         self.log_dir = log_dir or './logs'
@@ -36,7 +36,7 @@ class QianfanUploader:
         """加载配置"""
         default_config = {
             'qianfan': {
-                'login_url': 'https://ark.xiaohongshu.com/',
+                'login_url': 'https://fxg.jinritemai.com/',
                 'username': '',
                 'password': '',
                 'headless': False,
@@ -88,16 +88,16 @@ class QianfanUploader:
         self._log("浏览器启动完成")
         
     def login(self):
-        """登录小红书千帆后台"""
-        self._log("开始登录千帆后台...")
+        """登录小红书抖音小店"""
+        self._log("开始登录抖音小店...")
         
         config = self.config.get('qianfan', {})
-        self.page.goto(config.get('login_url', 'https://ark.xiaohongshu.com/'))
+        self.page.goto(config.get('login_url', 'https://fxg.jinritemai.com/'))
         
         # 等待登录页面加载
         self.page.wait_for_load_state('networkidle')
         
-        # 小红书千帆后台登录方式可能有多种：扫码/账号密码/手机号
+        # 小红书抖音小店登录方式可能有多种：扫码/账号密码/手机号
         # 先等待用户手动登录或扫码
         
         self._log("请手动完成登录（支持扫码或账号密码），登录完成后按回车继续...")
@@ -133,7 +133,7 @@ class QianfanUploader:
             self._log(f"开始上架: {product.get('title', '未知')[:30]}...")
             
             # 进入商品发布页面
-            self.page.goto('https://ark.xiaohongshu.com/app-system/goods/publish')
+            self.page.goto('https://fxg.jinritemai.com/app-system/goods/publish')
             self.page.wait_for_load_state('networkidle')
             
             # 等待页面加载
@@ -445,7 +445,7 @@ class QianfanUploader:
 
 
 def main():
-    parser = argparse.ArgumentParser(description='小红书千帆后台自动上架')
+    parser = argparse.ArgumentParser(description='小红书抖音小店自动上架')
     parser.add_argument('--input', required=True, help='商品数据文件')
     parser.add_argument('--config', help='配置文件')
     parser.add_argument('--log-dir', default='./logs', help='日志目录')
@@ -464,7 +464,7 @@ def main():
         return
     
     # 创建上传器
-    uploader = QianfanUploader(args.config, args.log_dir)
+    uploader = DouyinUploader(args.config, args.log_dir)
     
     try:
         # 启动浏览器

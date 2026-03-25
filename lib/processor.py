@@ -66,7 +66,7 @@ class ProductProcessor:
                 product['price'] = self._calculate_price(product['price'], profit_rate)
                 
                 # 处理分类
-                product['category_qianfan'] = self._map_category(product.get('category', ''))
+                product['category_douyin'] = self._map_category(product.get('category', ''))
                 
                 # 处理图片
                 product['images_processed'] = self._process_images(product.get('images', []))

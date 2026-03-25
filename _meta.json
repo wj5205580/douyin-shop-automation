@@ -1,7 +1,7 @@
 {
-  "name": "xiaohongshu-qianfan-automation",
+  "name": "douyin-shop-automation",
   "version": "1.0.0",
-  "description": "小红书千帆后台自动化上货系统 - 从WSY采集到小红书千帆后台上架的完整链路，支持自动生成小红书风格标题和话题标签",
+  "description": "抖音小店自动化上货系统 - 从WSY采集到抖音小店上架的完整链路，支持自动生成风格标题和话题标签",
   "author": "小艺",
   "entry": "scripts/run.sh",
   "scripts": {
@@ -20,5 +20,5 @@
     "required": ["wsy.token", "qianfan.username"],
     "optional": ["feishu_webhook"]
   },
-  "tags": ["电商", "自动化", "小红书", "千帆", "采集", "上架", "种草"]
+  "tags": ["电商", "自动化", "", "", "采集", "上架", "种草"]
 }

@@ -211,13 +211,13 @@ create_aliases() {
         if ! grep -q "douyin-shop" "$SHELL_RC" 2>/dev/null; then
             cat >> "$SHELL_RC" << 'EOF'
 
-# 小红书千帆后台自动化上货快捷命令
-alias xhsqf='bash ~/.agents/skills/xiaohongshu-qianfan-automation/scripts/run.sh'
-alias xhsqf-collect='bash ~/.agents/skills/xiaohongshu-qianfan-automation/scripts/collect.sh'
-alias xhsqf-process='bash ~/.agents/skills/xiaohongshu-qianfan-automation/scripts/process.sh'
-alias xhsqf-upload='bash ~/.agents/skills/xiaohongshu-qianfan-automation/scripts/upload.sh'
-alias xhsqf-config='nano ~/.agents/skills/xiaohongshu-qianfan-automation/config/config.json'
-alias xhsqf-logs='tail -f ~/.agents/skills/xiaohongshu-qianfan-automation/logs/*.log'
+# 抖音小店自动化上货快捷命令
+alias dyshop='bash ~/.agents/skills/xiaohongshu-qianfan-automation/scripts/run.sh'
+alias dyshop-collect='bash ~/.agents/skills/xiaohongshu-qianfan-automation/scripts/collect.sh'
+alias dyshop-process='bash ~/.agents/skills/xiaohongshu-qianfan-automation/scripts/process.sh'
+alias dyshop-upload='bash ~/.agents/skills/xiaohongshu-qianfan-automation/scripts/upload.sh'
+alias dyshop-config='nano ~/.agents/skills/xiaohongshu-qianfan-automation/config/config.json'
+alias dyshop-logs='tail -f ~/.agents/skills/xiaohongshu-qianfan-automation/logs/*.log'
 EOF
             log "✓ 快捷命令已添加到 $SHELL_RC"
             warn "请运行: source $SHELL_RC"
@@ -271,7 +271,7 @@ show_usage() {
 # 主函数
 main() {
     log "================================"
-    log "  小红书千帆后台自动化上货 Skill 安装"
+    log "  抖音小店自动化上货 Skill 安装"
     log "================================"
     log ""
     

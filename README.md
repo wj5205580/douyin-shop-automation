@@ -1,10 +1,10 @@
-# 小红书千帆后台自动化上货系统
+# 抖音小店后台自动化上货系统
 
-[![Release](https://img.shields.io/github/v/release/wj5205580/xiaohongshu-qianfan-automation)](https://github.com/wj5205580/xiaohongshu-qianfan-automation/releases)
+[![Release](https://img.shields.io/github/v/release/wj5205580/douyin-shop-automation)](https://github.com/wj5205580/douyin-shop-automation/releases)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://python.org)
 
-> 从WSY采集商品，自动处理后上架到小红书千帆后台的完整自动化解决方案
+> 从WSY采集商品，自动处理后上架到抖音小店后台的完整自动化解决方案
 
 ---
 
@@ -12,8 +12,8 @@
 
 - 🚀 **一键上货** - 采集→处理→上架全自动
 - 🔍 **智能采集** - 支持WSY分类/关键词/店铺采集
-- 🎨 **数据处理** - 标题优化（小红书风格）、价格计算、图片压缩
-- 🏷️ **自动标签** - 自动生成小红书话题标签（OOTD、种草等）
+- 🎨 **数据处理** - 标题优化（风格）、价格计算、图片压缩
+- 🏷️ **自动标签** - 自动生成话题标签（OOTD、种草等）
 - 🤖 **自动上架** - Playwright模拟人工操作千帆后台
 - ⏰ **定时任务** - 支持crontab定时执行
 - 📱 **飞书通知** - 执行结果实时推送
@@ -25,18 +25,18 @@
 ### 方式一：一键安装（推荐）
 
 ```bash
-curl -fsSL https://github.com/wj5205580/xiaohongshu-qianfan-automation/releases/download/v1.0.0/install-xiaohongshu-qianfan-automation.sh | bash
+curl -fsSL https://github.com/wj5205580/douyin-shop-automation/releases/download/v1.0.0/install-douyin-shop-automation.sh | bash
 ```
 
 ### 方式二：手动安装
 
 ```bash
 # 下载压缩包
-wget https://github.com/wj5205580/xiaohongshu-qianfan-automation/releases/download/v1.0.0/xiaohongshu-qianfan-automation-v1.0.0.tar.gz
+wget https://github.com/wj5205580/douyin-shop-automation/releases/download/v1.0.0/douyin-shop-automation-v1.0.0.tar.gz
 
 # 解压安装
-tar -xzf xiaohongshu-qianfan-automation-v1.0.0.tar.gz
-cd xiaohongshu-qianfan-automation
+tar -xzf douyin-shop-automation-v1.0.0.tar.gz
+cd douyin-shop-automation
 bash install/install.sh
 ```
 
@@ -44,7 +44,7 @@ bash install/install.sh
 
 ```bash
 # 复制到OpenClaw技能目录
-cp -r xiaohongshu-qianfan-automation ~/.agents/skills/
+cp -r douyin-shop-automation ~/.agents/skills/
 ```
 
 ---
@@ -55,7 +55,7 @@ cp -r xiaohongshu-qianfan-automation ~/.agents/skills/
 
 ```bash
 # 编辑配置
-xhsqf-config
+dyshop-config
 
 # 填写：
 # - WSY Token（从WSY平台获取）
@@ -66,14 +66,14 @@ xhsqf-config
 ### 2. 测试
 
 ```bash
-bash ~/.agents/skills/xiaohongshu-qianfan-automation/install/test.sh
+bash ~/.agents/skills/douyin-shop-automation/install/test.sh
 ```
 
 ### 3. 运行
 
 ```bash
 # 一键执行
-xhsqf --category "女装" --limit 20 --profit 30
+dyshop --category "女装" --limit 20 --profit 30
 ```
 
 ---
@@ -84,17 +84,17 @@ xhsqf --category "女装" --limit 20 --profit 30
 
 | 命令 | 功能 |
 |------|------|
-| `xhsqf` | 一键执行完整流程 |
-| `xhsqf-collect` | 仅采集商品 |
-| `xhsqf-process` | 仅处理数据 |
-| `xhsqf-upload` | 仅上架商品 |
-| `xhsqf-config` | 编辑配置 |
-| `xhsqf-logs` | 查看日志 |
+| `dyshop` | 一键执行完整流程 |
+| `dyshop-collect` | 仅采集商品 |
+| `dyshop-process` | 仅处理数据 |
+| `dyshop-upload` | 仅上架商品 |
+| `dyshop-config` | 编辑配置 |
+| `dyshop-logs` | 查看日志 |
 
 ### 参数说明
 
 ```bash
-xhsqf --category "女装" --limit 50 --profit 30
+dyshop --category "女装" --limit 50 --profit 30
 ```
 
 | 参数 | 说明 | 示例 |
@@ -129,10 +129,10 @@ xhsqf --category "女装" --limit 50 --profit 30
 crontab -e
 
 # 每2小时自动采集上架
-0 */2 * * * bash ~/.agents/skills/xiaohongshu-qianfan-automation/scripts/run.sh --category "女装" --limit 10 >> ~/.agents/skills/xiaohongshu-qianfan-automation/logs/cron.log 2>&1
+0 */2 * * * bash ~/.agents/skills/douyin-shop-automation/scripts/run.sh --category "女装" --limit 10 >> ~/.agents/skills/douyin-shop-automation/logs/cron.log 2>&1
 
 # 每天早上8点执行
-0 8 * * * bash ~/.agents/skills/xiaohongshu-qianfan-automation/scripts/run.sh --category "家居" --limit 20 >> ~/.agents/skills/xiaohongshu-qianfan-automation/logs/cron.log 2>&1
+0 8 * * * bash ~/.agents/skills/douyin-shop-automation/scripts/run.sh --category "家居" --limit 20 >> ~/.agents/skills/douyin-shop-automation/logs/cron.log 2>&1
 ```
 
 ---
@@ -140,7 +140,7 @@ crontab -e
 ## 📁 目录结构
 
 ```
-~/.agents/skills/xiaohongshu-qianfan-automation/
+~/.agents/skills/douyin-shop-automation/
 ├── config/
 │   └── config.json          # 配置文件
 ├── scripts/
@@ -203,9 +203,9 @@ crontab -e
 
 1. **控制上架频率** - 建议每小时不超过20个商品
 2. **首次需登录** - 首次上架需手动登录千帆后台保存cookie
-3. **标题长度** - 小红书标题限制20字以内，要有关键词
-4. **话题标签** - 自动添加OOTD、种草等小红书热门标签
-5. **检查日志** - 遇到问题查看 `xhsqf-logs`
+3. **标题长度** - 标题限制20字以内，要有关键词
+4. **话题标签** - 自动添加OOTD、种草等热门标签
+5. **检查日志** - 遇到问题查看 `dyshop-logs`
 
 ---
 
@@ -214,7 +214,7 @@ crontab -e
 ### v1.0.0 (2026-03-25)
 - 🎉 初始版本发布
 - ✅ WSY平台商品采集
-- ✅ 小红书风格数据处理（标题、标签）
+- ✅ 风格数据处理（标题、标签）
 - ✅ 千帆后台自动上架
 - ✅ 自动添加话题标签
 - ✅ 定时任务支持
@@ -238,6 +238,6 @@ MIT License
 
 - 文档：[docs/USAGE.md](docs/USAGE.md)
 - 快速开始：[QUICKSTART.md](QUICKSTART.md)
-- 问题反馈：[GitHub Issues](https://github.com/wj5205580/xiaohongshu-qianfan-automation/issues)
+- 问题反馈：[GitHub Issues](https://github.com/wj5205580/douyin-shop-automation/issues)
 
-**祝您小红书爆单！** 🎉
+**祝您爆单！** 🎉

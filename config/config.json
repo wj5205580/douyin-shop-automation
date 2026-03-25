@@ -6,8 +6,8 @@
     "retry": 3,
     "delay": 1
   },
-  "qianfan": {
-    "login_url": "https://ark.xiaohongshu.com/",
+  "douyin": {
+    "login_url": "https://fxg.jinritemai.com/",
     "username": "",
     "password": "",
     "headless": false,
@@ -17,7 +17,7 @@
     "profit_rate": 30,
     "min_price": 9.9,
     "max_price": 9999,
-    "title_max_length": 20,
+    "title_max_length": 30,
     "image_quality": 85,
     "image_max_size": 800,
     "forbidden_words": [
