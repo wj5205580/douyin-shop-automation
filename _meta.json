@@ -1,0 +1,24 @@
+{
+  "name": "douyin-shop-automation",
+  "version": "1.0.0",
+  "description": "抖音小店自动化上货系统 - 从WSY采集到抖音小店上架的完整链路",
+  "author": "小艺",
+  "entry": "scripts/run.sh",
+  "scripts": {
+    "collect": "scripts/collect.sh",
+    "process": "scripts/process.sh",
+    "upload": "scripts/upload.sh",
+    "run": "scripts/run.sh"
+  },
+  "dependencies": [
+    "python3",
+    "playwright",
+    "requests",
+    "pillow"
+  ],
+  "config": {
+    "required": ["wsy.token", "douyin.username"],
+    "optional": ["feishu_webhook"]
+  },
+  "tags": ["电商", "自动化", "抖音", "采集", "上架"]
+}
