@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-小红书抖音小店自动上架机器人
+抖音小店自动上架机器人
 使用Playwright模拟人工操作
 """
 
@@ -35,7 +35,7 @@ class DouyinUploader:
     def _load_config(self, config_file):
         """加载配置"""
         default_config = {
-            'qianfan': {
+            'douyin': {
                 'login_url': 'https://fxg.jinritemai.com/',
                 'username': '',
                 'password': '',
@@ -88,7 +88,7 @@ class DouyinUploader:
         self._log("浏览器启动完成")
         
     def login(self):
-        """登录小红书抖音小店"""
+        """登录抖音小店"""
         self._log("开始登录抖音小店...")
         
         config = self.config.get('qianfan', {})
@@ -97,7 +97,7 @@ class DouyinUploader:
         # 等待登录页面加载
         self.page.wait_for_load_state('networkidle')
         
-        # 小红书抖音小店登录方式可能有多种：扫码/账号密码/手机号
+        # 抖音小店登录方式可能有多种：扫码/账号密码/手机号
         # 先等待用户手动登录或扫码
         
         self._log("请手动完成登录（支持扫码或账号密码），登录完成后按回车继续...")
@@ -445,7 +445,7 @@ class DouyinUploader:
 
 
 def main():
-    parser = argparse.ArgumentParser(description='小红书抖音小店自动上架')
+    parser = argparse.ArgumentParser(description='抖音小店自动上架')
     parser.add_argument('--input', required=True, help='商品数据文件')
     parser.add_argument('--config', help='配置文件')
     parser.add_argument('--log-dir', default='./logs', help='日志目录')

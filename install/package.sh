@@ -3,7 +3,7 @@
 
 set -e
 
-SKILL_NAME="xiaohongshu-qianfan-automation"
+SKILL_NAME="douyin-shop-automation"
 SKILL_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 OUTPUT_DIR="$SKILL_DIR/dist"
 VERSION=$(cat "$SKILL_DIR/_meta.json" | grep '"version"' | cut -d'"' -f4)

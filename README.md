@@ -1,10 +1,10 @@
-# 抖音小店后台自动化上货系统
+# 抖音小店自动化上货系统
 
 [![Release](https://img.shields.io/github/v/release/wj5205580/douyin-shop-automation)](https://github.com/wj5205580/douyin-shop-automation/releases)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://python.org)
 
-> 从WSY采集商品，自动处理后上架到抖音小店后台的完整自动化解决方案
+> **抖音小店专用** - 从WSY采集商品，自动处理后上架到抖音小店后台 (fxg.jinritemai.com) 的完整自动化解决方案
 
 ---
 
@@ -12,9 +12,8 @@
 
 - 🚀 **一键上货** - 采集→处理→上架全自动
 - 🔍 **智能采集** - 支持WSY分类/关键词/店铺采集
-- 🎨 **数据处理** - 标题优化（风格）、价格计算、图片压缩
-- 🏷️ **自动标签** - 自动生成话题标签（OOTD、种草等）
-- 🤖 **自动上架** - Playwright模拟人工操作千帆后台
+- 🎨 **数据处理** - 标题优化、价格计算、图片压缩
+- 🤖 **自动上架** - Playwright模拟人工操作抖音小店后台
 - ⏰ **定时任务** - 支持crontab定时执行
 - 📱 **飞书通知** - 执行结果实时推送
 
@@ -59,7 +58,7 @@ dyshop-config
 
 # 填写：
 # - WSY Token（从WSY平台获取）
-# - 千帆后台登录账号密码
+# - 抖音小店登录账号密码
 # - 飞书Webhook（可选）
 ```
 
@@ -111,13 +110,12 @@ dyshop --category "女装" --limit 50 --profit 30
 
 ```
 ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
-│   WSY采集   │ -> │  数据处理   │ -> │  图片处理   │ -> │ 千帆上架   │
+│   WSY采集   │ -> │  数据处理   │ -> │  图片处理   │ -> │ 抖店上架   │
 └─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘
       │                   │                   │                   │
    商品列表           标题优化            压缩去水印          自动填表
    价格库存           价格计算            格式转换            图片上传
-   主图详情           分类映射            临时保存            添加标签
-                                          话题生成            提交审核
+   主图详情           分类映射            临时保存            提交审核
 ```
 
 ---
@@ -151,7 +149,7 @@ crontab -e
 ├── lib/
 │   ├── collector.py         # WSY采集器
 │   ├── processor.py         # 数据处理器
-│   └── uploader.py          # 千帆后台上传器
+│   └── uploader.py          # 抖音小店上传器
 ├── data/
 │   ├── raw/                 # 原始数据
 │   └── processed/           # 处理后数据
@@ -175,7 +173,7 @@ crontab -e
     "token": "YOUR_WSY_TOKEN",
     "timeout": 30
   },
-  "qianfan": {
+  "douyin": {
     "username": "YOUR_PHONE",
     "password": "YOUR_PASSWORD"
   },
@@ -183,14 +181,16 @@ crontab -e
     "profit_rate": 30,
     "min_price": 9.9,
     "max_price": 9999,
+    "title_max_length": 30,
     "category_map": {
-      "女装": "50000001",
-      "男装": "50000002",
-      "美妆": "50000005"
-    },
-    "tags_map": {
-      "女装": ["OOTD", "穿搭", "显瘦", "氛围感"],
-      "美妆": ["种草", "试色", "平价", "学生党"]
+      "女装": "20001",
+      "男装": "20002",
+      "鞋靴": "20003",
+      "箱包": "20004",
+      "美妆": "20005",
+      "家居": "20006",
+      "数码": "20007",
+      "食品": "20008"
     }
   },
   "feishu_webhook": "YOUR_FEISHU_WEBHOOK"
@@ -202,10 +202,10 @@ crontab -e
 ## ⚠️ 注意事项
 
 1. **控制上架频率** - 建议每小时不超过20个商品
-2. **首次需登录** - 首次上架需手动登录千帆后台保存cookie
-3. **标题长度** - 标题限制20字以内，要有关键词
-4. **话题标签** - 自动添加OOTD、种草等热门标签
-5. **检查日志** - 遇到问题查看 `dyshop-logs`
+2. **首次需登录** - 首次上架需手动登录抖音小店后台保存cookie
+3. **标题长度** - 抖音小店标题限制30字
+4. **检查日志** - 遇到问题查看 `dyshop-logs`
+5. **WSY Token** - 需要自行申请WSY平台Token
 
 ---
 
@@ -214,9 +214,8 @@ crontab -e
 ### v1.0.0 (2026-03-25)
 - 🎉 初始版本发布
 - ✅ WSY平台商品采集
-- ✅ 风格数据处理（标题、标签）
-- ✅ 千帆后台自动上架
-- ✅ 自动添加话题标签
+- ✅ 智能数据处理（标题优化、价格计算）
+- ✅ 抖音小店自动上架
 - ✅ 定时任务支持
 - ✅ 飞书通知集成
 
@@ -240,4 +239,10 @@ MIT License
 - 快速开始：[QUICKSTART.md](QUICKSTART.md)
 - 问题反馈：[GitHub Issues](https://github.com/wj5205580/douyin-shop-automation/issues)
 
-**祝您爆单！** 🎉
+---
+
+## 🔗 相关项目
+
+- **小红书千帆版本**：[xiaohongshu-qianfan-automation](https://github.com/wj5205580/xiaohongshu-qianfan-automation) - 适配小红书千帆后台
+
+**祝您生意兴隆！** 🎉

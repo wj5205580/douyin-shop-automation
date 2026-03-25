@@ -116,9 +116,9 @@ run_config_wizard() {
     
     # 抖店配置
     info ""
-    info "【Step 2】千帆后台配置"
-    read -p "千帆后台登录用户名 (手机号/邮箱): " dy_username
-    read -s -p "千帆后台登录密码: " dy_password
+    info "【Step 2】抖音小店配置"
+    read -p "抖音小店登录用户名 (手机号/邮箱): " dy_username
+    read -s -p "抖音小店登录密码: " dy_password
     echo ""
     
     # 利润率
@@ -142,8 +142,8 @@ run_config_wizard() {
     "retry": 3,
     "delay": 1
   },
-  "qianfan": {
-    "login_url": "https://ark.xiaohongshu.com/",
+  "douyin": {
+    "login_url": "https://fxg.jinritemai.com/",
     "username": "${dy_username}",
     "password": "${dy_password}",
     "headless": false,
@@ -153,7 +153,7 @@ run_config_wizard() {
     "profit_rate": ${profit_rate},
     "min_price": 9.9,
     "max_price": 9999,
-    "title_max_length": 20,
+    "title_max_length": 30,
     "image_quality": 85,
     "image_max_size": 800,
     "forbidden_words": [
@@ -172,8 +172,6 @@ run_config_wizard() {
       "食品": "50000009",
       "母婴": "50000010"
     },
-    "tags_map": {
-      "女装": ["OOTD", "穿搭", "显瘦", "氛围感"],
       "美妆": ["种草", "试色", "平价", "学生党"],
       "家居": ["收纳", "改造", "ins风", "好物分享"]
     }

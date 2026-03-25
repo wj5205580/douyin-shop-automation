@@ -15,12 +15,12 @@ dyshop-config
 
 # 填写：
 # - WSY Token（从WSY平台获取）
-# - 抖店登录账号密码
+# - 抖音小店登录账号密码
+# - 飞书Webhook（可选）
 ```
 
 ### 3️⃣ 测试（1分钟）
 ```bash
-# 运行测试
 bash ~/.agents/skills/douyin-shop-automation/install/test.sh
 ```
 
@@ -83,7 +83,7 @@ dyshop-upload --input data/processed/xxx.json
    - 避免被抖店风控
 
 3. **保存Cookie**
-   - 首次登录抖店后保存cookie
+   - 首次登录抖音小店后保存cookie
    - 后续自动登录
 
 4. **检查日志**
